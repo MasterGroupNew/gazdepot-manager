@@ -1,14 +1,14 @@
 <template>
-  <div class="space-y-6">
+  <div class="space-y-4 md:space-y-6">
 
     <!-- Prix par société -->
-    <div class="bg-white rounded-xl border border-gray-200 p-5">
-      <h2 class="font-semibold text-gray-800 mb-1">💰 Prix de recharge fournisseurs</h2>
+    <div class="bg-white rounded-xl border border-gray-200 p-4 md:p-5">
+      <h2 class="font-semibold text-gray-800 mb-1 text-sm md:text-base">💰 Prix de recharge fournisseurs</h2>
       <p class="text-xs text-gray-400 mb-4">
         Ces prix sont appliqués automatiquement lors des approvisionnements.
       </p>
 
-      <div class="grid grid-cols-2 gap-4 mb-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <div
           v-for="p in chargesStore.prix"
           :key="p.id"
@@ -21,11 +21,16 @@
             </span>
           </div>
           <div class="flex items-center gap-2 mb-2">
-            <input v-model.number="p.valeur" type="number" min="0" class="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-orange-400"/>
+            <input
+              v-model.number="p.valeur"
+              type="number"
+              min="0"
+              class="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-orange-400"
+            />
             <span class="text-xs text-gray-400 whitespace-nowrap">FCFA</span>
           </div>
           <p class="text-xs text-gray-400">
-            Marge / échange :
+            Marge :
             <span class="font-medium text-green-600">
               {{ formatFCFA((p.type_bouteille === 'B6' ? 2200 : 5500) - p.valeur) }} FCFA
             </span>
@@ -35,20 +40,20 @@
 
       <button
         @click="sauvegarderPrix"
-        class="bg-orange-500 text-white rounded-lg px-6 py-2.5 text-sm font-medium hover:bg-orange-600 transition-colors"
+        class="w-full bg-orange-500 text-white rounded-lg px-6 py-2.5 text-sm font-medium hover:bg-orange-600 transition-colors"
       >
         Sauvegarder les prix
       </button>
     </div>
 
     <!-- Seuils d'alerte -->
-    <div class="bg-white rounded-xl border border-gray-200 p-5">
-      <h2 class="font-semibold text-gray-800 mb-1">⚠️ Seuils d'alerte stock</h2>
+    <div class="bg-white rounded-xl border border-gray-200 p-4 md:p-5">
+      <h2 class="font-semibold text-gray-800 mb-1 text-sm md:text-base">⚠️ Seuils d'alerte stock</h2>
       <p class="text-xs text-gray-400 mb-4">
         Une alerte s'affiche quand le stock descend en dessous de ce seuil.
       </p>
 
-      <div class="grid grid-cols-3 gap-4 mb-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
         <div
           v-for="s in stockStore.stocks"
           :key="s.id"
@@ -74,22 +79,22 @@
 
       <button
         @click="sauvegarderSeuils"
-        class="bg-orange-500 text-white rounded-lg px-6 py-2.5 text-sm font-medium hover:bg-orange-600 transition-colors"
+        class="w-full bg-orange-500 text-white rounded-lg px-6 py-2.5 text-sm font-medium hover:bg-orange-600 transition-colors"
       >
         Sauvegarder les seuils
       </button>
     </div>
 
     <!-- Informations du magasin -->
-    <div class="bg-white rounded-xl border border-gray-200 p-5">
-      <h2 class="font-semibold text-gray-800 mb-1">
+    <div class="bg-white rounded-xl border border-gray-200 p-4 md:p-5">
+      <h2 class="font-semibold text-gray-800 mb-1 text-sm md:text-base">
         🏪 Informations du magasin
       </h2>
       <p class="text-xs text-gray-400 mb-4">
         Affichées dans l'en-tête de l'application.
       </p>
 
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label class="text-xs font-medium text-gray-600 block mb-1">
             Nom du dépôt
@@ -134,12 +139,12 @@
 
       <button
         @click="sauvegarder"
-        class="mt-4 bg-orange-500 text-white rounded-lg px-6 py-2.5 text-sm font-medium hover:bg-orange-600 transition-colors"
+        class="mt-4 w-full bg-orange-500 text-white rounded-lg px-6 py-2.5 text-sm font-medium hover:bg-orange-600 transition-colors"
       >
         Sauvegarder
       </button>
 
-      <p v-if="succes" class="text-xs text-green-600 mt-3">
+      <p v-if="succes" class="text-xs text-green-600 mt-3 text-center">
         ✅ Paramètres sauvegardés avec succès.
       </p>
     </div>

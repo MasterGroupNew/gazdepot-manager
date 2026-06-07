@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center">
-    <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
+  <div class="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-sm">
 
       <div class="text-center mb-8">
         <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-          <span class="text-3xl">🔥</span>
+          <span class="text-4xl">🔥</span>
         </div>
-        <h1 class="text-2xl font-bold text-gray-800">GazDepôt Manager</h1>
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-800">GazDepôt Manager</h1>
         <p class="text-xs text-gray-400 mt-1">Connexion sécurisée</p>
       </div>
 
@@ -16,7 +16,7 @@
           <input
             v-model="form.email"
             type="email"
-            placeholder="viewer@test.com ou editor@test.com"
+            placeholder="viewer@test.com"
             class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-orange-400"
           />
         </div>
@@ -38,7 +38,7 @@
         <button
           type="submit"
           :disabled="loading"
-          class="w-full bg-orange-500 text-white font-medium py-2.5 rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50"
+          class="w-full bg-orange-500 text-white font-medium py-2.5 rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50 text-sm md:text-base"
         >
           {{ loading ? 'Connexion...' : 'Se connecter' }}
         </button>
@@ -46,14 +46,14 @@
 
       <div class="mt-6 pt-6 border-t border-gray-100">
         <p class="text-xs text-gray-400 text-center mb-3">Comptes de test</p>
-        <div class="space-y-2">
+        <div class="space-y-2 text-xs">
           <div class="bg-blue-50 rounded-lg p-3">
-            <p class="text-xs font-medium text-blue-700">👤 Viewer (lecture seule)</p>
-            <p class="text-xs text-blue-600">viewer@test.com / password123</p>
+            <p class="font-medium text-blue-700">👤 Viewer</p>
+            <p class="text-blue-600 truncate">viewer@test.com / password123</p>
           </div>
           <div class="bg-green-50 rounded-lg p-3">
-            <p class="text-xs font-medium text-green-700">✏️ Editor (tout modifier)</p>
-            <p class="text-xs text-green-600">editor@test.com / password123</p>
+            <p class="font-medium text-green-700">✏️ Editor</p>
+            <p class="text-green-600 truncate">editor@test.com / password123</p>
           </div>
         </div>
       </div>
